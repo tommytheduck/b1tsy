@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>B1tsy Ducky</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #08111c;
+      --panel: rgba(10, 19, 31, 0.86);
+      --panel-border: rgba(123, 171, 255, 0.18);
+      --text: #e8f1ff;
+      --muted: #9cb2cf;
+      --accent: #76d7ff;
+      --accent-2: #9c7bff;
+      --shadow: 0 20px 80px rgba(0, 0, 0, 0.45);
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background:
+        radial-gradient(circle at top left, rgba(118, 215, 255, 0.16), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(156, 123, 255, 0.14), transparent 32%),
+        linear-gradient(180deg, #060b13 0%, #0a1320 100%);
+      color: var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    body {
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+    .card {
+      width: min(100%, 460px);
+      padding: 28px;
+      border: 1px solid var(--panel-border);
+      border-radius: 24px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+    p {
+      margin: 0 0 20px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    label {
+      display: block;
+      margin: 0 0 10px;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+    input {
+      width: 100%;
+      appearance: none;
+      border: 1px solid rgba(148, 180, 220, 0.22);
+      border-radius: 14px;
+      padding: 14px 16px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      font: inherit;
+      outline: none;
+    }
+    input:focus {
+      border-color: rgba(118, 215, 255, 0.55);
+      box-shadow: 0 0 0 4px rgba(118, 215, 255, 0.12);
+    }
+    .actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    button {
+      appearance: none;
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 18px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, opacity 0.16s ease;
+    }
+    button:hover { transform: translateY(-1px); }
+    button:active { transform: translateY(0); }
+    .play {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #04111c;
+      box-shadow: 0 14px 30px rgba(118, 215, 255, 0.22);
+      flex: 1;
+    }
+    .hint {
+      margin-top: 16px;
+      font-size: 0.88rem;
+      color: rgba(232, 241, 255, 0.7);
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>B1tsy Ducky</h1>
+    <p>Enter a name, then open the game.</p>
+    <label for="playerName">Name</label>
+    <input id="playerName" name="playerName" autocomplete="off" spellcheck="false" placeholder="Your name">
+    <div class="actions">
+      <button class="play" id="playBtn" type="button">Play</button>
+    </div>
+    <div class="hint">The game will open at <code>https://b1tsy.v1t.site/game.html</code>.</div>
+  </main>
+  <script>
+    const input = document.getElementById("playerName");
+    const button = document.getElementById("playBtn");
+
+    function play() {
+      window.open("https://b1tsy.v1t.site/game.html", "_blank");
+    }
+
+    button.addEventListener("click", play);
+    input.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        play();
+      }
+    });
+  </script>
+</body>
+</html>
